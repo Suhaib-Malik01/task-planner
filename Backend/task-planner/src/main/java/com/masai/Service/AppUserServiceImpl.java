@@ -18,8 +18,7 @@ public class AppUserServiceImpl implements AppUserService {
 
         AppUser user = new AppUser();
         user.setEmail(appUserDto.getEmail());
-        user.setFirstName(appUserDto.getFirstName());
-        user.setLastName(appUserDto.getLastName());
+        user.setName(appUserDto.getName());
         user.setPassword(appUserDto.getPassword());
 
         user = appUserRepository.save(user);

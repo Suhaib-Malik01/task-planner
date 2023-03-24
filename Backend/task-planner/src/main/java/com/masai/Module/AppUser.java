@@ -3,6 +3,8 @@ package com.masai.Module;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,13 +27,12 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String firstName;
-
-    private String lastName;
+    private String Name;
 
     @Column(unique = true)
     private String email;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @OneToMany(mappedBy = "assignee")
