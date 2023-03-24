@@ -46,4 +46,9 @@ public class UserController {
 
         return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
     }
+
+    @GetMapping("/hello")
+    public String hello(){
+        return "Hello";
+    }
 }

@@ -27,16 +27,16 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if (auth != null) {
+        if(auth!=null){
             SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());
 
             String jwt = Jwts.builder()
-                    .setIssuer("Suhaib")
-                    .setSubject("Jwt Token")
-                    .claim("username", auth.getName())
-                    .claim("authorities", generateAuthorities(auth.getAuthorities()))
-                    .setIssuedAt(new Date())
-                    .signWith(key).compact();
+            .setIssuer("Suhaib")
+            .setSubject("Jwt Token")
+            .claim("username", auth.getName())
+            .claim("authorities", generateAuthorities(auth.getAuthorities()))
+            .setIssuedAt(new Date())
+            .signWith(key).compact();
 
             response.setHeader(SecurityConstants.JWT_HEADER, jwt);
 
@@ -46,20 +46,20 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
     }
 
     private String generateAuthorities(Collection<? extends GrantedAuthority> collection) {
-
-        Set<String> authoritiesSet = new HashSet<>();
-
+        
+    	Set<String> authoritiesSet = new HashSet<>();
+        
         for (GrantedAuthority authority : collection) {
             authoritiesSet.add(authority.getAuthority());
         }
+        
         return String.join(",", authoritiesSet);
 
     }
-
+    
     @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) {
+    protected boolean shouldNotFilter(HttpServletRequest request){
 
         return !request.getServletPath().equals("/user/signIn");
     }
-
 }

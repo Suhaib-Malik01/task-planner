@@ -3,6 +3,7 @@ package com.masai.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -17,6 +18,7 @@ import com.masai.Repository.AppUserRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    @Autowired
     private AppUserRepository appUserRepository;
 
     @Override

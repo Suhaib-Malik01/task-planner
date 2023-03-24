@@ -16,18 +16,18 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
 
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and()
-		.csrf().disable()
-		.authorizeHttpRequests()
-		.requestMatchers(HttpMethod.POST, "/user/register").permitAll()
-		.anyRequest().authenticated().and()
-		// .addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class)
-		.addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
-		.addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
-		.formLogin()
-		.and()
-		.httpBasic();
+		http
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+				.csrf().disable()
+				.authorizeHttpRequests()
+				.requestMatchers(HttpMethod.POST, "/user/register").permitAll()
+				.anyRequest().authenticated().and()
+				.addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
+				.addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
+				.formLogin()
+				.and()
+				.httpBasic();
 
 		return http.build();
 	}
@@ -36,5 +36,4 @@ public class SecurityConfig {
 	public PasswordEncoder getEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
 }
