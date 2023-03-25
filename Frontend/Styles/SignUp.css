@@ -1,0 +1,58 @@
+@import url('https://fonts.cdnfonts.com/css/circular-std');
+
+body{
+    font-family: 'Circular Std', sans-serif;
+}
+
+:root{
+    --first-color:#3e70ee;
+    --button-hover-color: #2c60e4;
+    --text-color: rgb(56, 56, 56);
+}
+
+#form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25%;
+    color: var(--text-color);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 2rem 5rem;
+}
+
+#form>form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    padding: 4rem 3rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+a{
+    text-decoration: none;
+    color: var(--first-color);
+}
+
+
+form input,button{
+    height: 35px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid var(--text-color);
+    padding: 6px 10px;
+}
+
+button{
+    background-color: var(--first-color);
+    color: white;
+    border: none;
+    transition: all 0.2s;
+    font-size: 17px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: var(--button-hover-color);
+}
+

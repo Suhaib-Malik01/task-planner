@@ -1,0 +1,108 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Styles/Dashboard.css" />
+    <title>Dashboard - TaskMate</title>
+  </head>
+  <body>
+    <div id="nav">
+      <div>
+        <h2>Home</h2>
+      </div>
+      <div>
+        <p>S</p>
+        <button>Log Out</button>
+      </div>
+    </div>
+
+    <div id="task-button">
+      <button>Add Task</button>
+    </div>
+
+    <section id="Dashboard">
+      <div id="sidebar">
+        <div>
+          <p class="thead">Sprints</p>
+          <button>Add Sprint</button>
+        </div>
+        <div id="Sprints">
+          <div id="sprintCard">
+            <div>
+              <h3>Sprint-1</h3>
+              <p>Start Date: <span id="data"></span></p>
+              <p>End Date: <span id="date"></span></p>
+            </div>
+            <div>
+              <button class="delete-sprint">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section id="task-box">
+        <div id="todo">
+          <p class="thead">To-do</p>
+          <div class="cards-bar">
+            <div class="Cards">
+              <div>
+                <h1>do you work</h1>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea
+                  natus odio illum esse ipsam accusantium excepturi,
+                </p>
+                <p>Category: <span class="category"></span></p>
+                <p>Assigned To: </p>
+              </div>
+              <div>
+                <button>Delete</button>
+                <button>In-Progress</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="cards-bar">
+          <p class="thead">in-Progress</p>
+
+          <div class="progress-card">
+            <div class="Cards">
+              <div>
+                <h1>do you work</h1>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea
+                  natus odio illum esse ipsam accusantium excepturi,Lorem ipsum, dolor sit amet consect?
+                </p>
+                <p>Category: <span class="category"></span></p>
+
+                <p>Assigned To: </p>
+              </div>
+              <div>
+                <button>Delete</button>
+                <button>Completed</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cards-bar">
+          <p class="thead">Completed</p>
+
+          <div id="completed-card">
+            <div class="Cards">
+              <div>
+                <h1>do you work</h1>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea
+                  natus odio illum esse ipsam accusantium excepturi,
+                </p>
+                <p>Category: <span class="category"></span></p>
+              </div>
+              <div>
+                <button>Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>

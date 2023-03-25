@@ -32,7 +32,11 @@ public class Sprint {
     private LocalDate endDate;
 
     @OneToOne
-    private AppUser user;
+    private AppUser sprintCreator;
+
+    @OneToMany
+    List<AppUser> users = new ArrayList<>();
+
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
