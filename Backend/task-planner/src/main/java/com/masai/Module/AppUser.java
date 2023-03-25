@@ -35,8 +35,11 @@ public class AppUser {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    @OneToMany(mappedBy = "CreatedBy")
+    private List<Task> task = new ArrayList<>();
+
     @OneToMany(mappedBy = "assignee")
-    private List<Task> tasks = new ArrayList<>();
+    private List<Task> assignedtasks = new ArrayList<>();
 
     @OneToMany
     private List<Sprint> sprints = new ArrayList<>();

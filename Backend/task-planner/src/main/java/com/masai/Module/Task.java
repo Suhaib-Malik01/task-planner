@@ -1,6 +1,7 @@
 package com.masai.Module;
 
 import com.masai.Enum.TaskType;
+import com.masai.Enum.taskStatus;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -28,8 +29,14 @@ public class Task {
 
     private String description;
 
+    @ManyToOne
+    private AppUser CreatedBy;
+
     @Enumerated(EnumType.STRING)
     private TaskType type;
+
+    @Enumerated(EnumType.STRING)
+    private taskStatus status;
 
     @ManyToOne
     @JoinColumn(name = "assignee_id")
