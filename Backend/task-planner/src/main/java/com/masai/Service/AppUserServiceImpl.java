@@ -5,13 +5,17 @@ import org.springframework.stereotype.Service;
 
 import com.masai.Dto.AppUserDto;
 import com.masai.Module.AppUser;
+import com.masai.Module.Sprint;
 import com.masai.Repository.AppUserRepository;
+import com.masai.Repository.SprintRepository;
 
 @Service
 public class AppUserServiceImpl implements AppUserService {
 
     @Autowired
     private AppUserRepository appUserRepository;
+
+    
 
     @Override
     public AppUserDto addUser(AppUserDto appUserDto) {
@@ -27,5 +31,11 @@ public class AppUserServiceImpl implements AppUserService {
 
         return appUserDto;
     }
+
+  
+
+    
+
+    
     
 }
