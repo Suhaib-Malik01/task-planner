@@ -17,15 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Dto.AppUserDto;
-import com.masai.Exception.TaskException;
-import com.masai.Exception.UserException;
 import com.masai.Module.AppUser;
-import com.masai.Module.Sprint;
-import com.masai.Module.Task;
 import com.masai.Repository.AppUserRepository;
 import com.masai.Service.AppUserService;
-import com.masai.Service.SprintService;
-import com.masai.Service.TaskService;
+
 
 @RestController
 @RequestMapping("/user")
@@ -37,12 +32,6 @@ public class UserController {
 
     @Autowired
     private AppUserService appUserService;
-
-    @Autowired
-    private TaskService taskService;
-
-    @Autowired
-    private SprintService sprintService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -62,42 +51,5 @@ public class UserController {
                 .orElseThrow(() -> new BadCredentialsException("Invalid Username or password"));
 
         return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
-    }
-
-    @PostMapping("/task")
-    public ResponseEntity<Task> addTask(@RequestBody Task task){
-
-        return new ResponseEntity<>(taskService.addTask(task),HttpStatus.ACCEPTED);
-    }
-
-    @DeleteMapping("/task/{id}")
-    public ResponseEntity<Task> deleteTask(@PathVariable Integer id) throws TaskException, UserException{
-
-        return new ResponseEntity<>(taskService.deleteTask(id),HttpStatus.OK);
-    }
-
-    @PutMapping("/task/{id}/{userId}")
-    public ResponseEntity<Task> changeAssignee(@PathVariable Integer id,@PathVariable Integer userId) throws UserException, TaskException{
-
-        return new ResponseEntity<>(taskService.changeAssignee(id, userId),HttpStatus.OK);
-    }
-
-    @PutMapping("/task/status/{id}/{statusId}")
-    public ResponseEntity<Task> changeStatus(@PathVariable Integer id,@PathVariable Integer statusId) throws UserException, TaskException{
-
-        return new ResponseEntity<>(taskService.changeStatus(id, statusId),HttpStatus.OK);
-    }
-
-    @PostMapping("/sprint")
-    public ResponseEntity<Sprint> addSprint(@RequestBody Sprint sprint){
-
-        return new ResponseEntity<>(sprintService.addSprint(sprint),HttpStatus.ACCEPTED);
-    }
-
-    @DeleteMapping("/sprint/{id}")
-
-    public ResponseEntity<Sprint> deleteSprint(@RequestBody Integer id){
-
-        return new ResponseEntity<>(sprintService.deleteSprint(id),HttpStatus.ACCEPTED);
     }
 }
