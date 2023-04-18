@@ -11,7 +11,34 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+import { async } from 'q';
 import { Link } from 'react-router-dom';
+
+
+ const signIn = async () =>{
+
+  const email = document.querySelector(".email").value;
+  const password = document.querySelector(".password").value;
+
+  const authToken = window.btoa(`${email}:${password}`);
+
+  fetch("http://localhost:8888/user/signIn", {
+    headers: {
+      Authorization: `Basic ${authToken}`,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      
+      const token = response.headers.get("Authorization");
+
+
+      localStorage.setItem("token", token);
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+ }
   
   export default function SignIn() {
     return (
@@ -35,11 +62,11 @@ import { Link } from 'react-router-dom';
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input className='email' type="email" />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" />
+                <Input className='password' type="password" />
               </FormControl>
               <Stack spacing={10}>
                 <Stack
@@ -50,6 +77,7 @@ import { Link } from 'react-router-dom';
                   <Link color={'blue.400'}>Forgot password?</Link>
                 </Stack>
                 <Button
+                 onClick={signIn}
                   bg={'blue.400'}
                   color={'white'}
                   _hover={{

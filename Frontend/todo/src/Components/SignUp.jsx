@@ -14,12 +14,11 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import { AiFillEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-  import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { async } from "q";
+
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,32 +26,28 @@ export default function SignUp() {
   const submitUser = async (event) => {
     event.preventDefault();
 
-    const user = {
+    const raw = JSON.stringify({
       name: document.querySelector(".name").value,
       email: document.querySelector(".email").value,
       password: document.querySelector(".password").value,
-    };
+    });
 
     var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
 
-var raw = JSON.stringify({
-  "name": "Suhail",
-  "email": "suhaik@gmail.com",
-  "password": "@Suhaib"
-});
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-fetch("http://localhost:8888/user/register", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+    fetch("http://localhost:8888/user/register", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
   return (
@@ -101,11 +96,7 @@ fetch("http://localhost:8888/user/register", requestOptions)
                       setShowPassword((showPassword) => !showPassword)
                     }
                   >
-                    {showPassword ? (
-                      <ViewIcon />
-                    ) : (
-                      <ViewOffIcon />
-                    )}
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                   </Button>
                 </InputRightElement>
               </InputGroup>
