@@ -19,12 +19,40 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { async } from "q";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
 
-  const submitUser = (event) => {
-    
+  const submitUser = async (event) => {
+    event.preventDefault();
+
+    const user = {
+      name: document.querySelector(".name").value,
+      email: document.querySelector(".email").value,
+      password: document.querySelector(".password").value,
+    };
+
+    var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "name": "Suhail",
+  "email": "suhaik@gmail.com",
+  "password": "@Suhaib"
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:8888/user/register", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
   };
 
   return (
