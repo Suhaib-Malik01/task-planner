@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import com.masai.Enum.taskStatus;
 import com.masai.Exception.TaskException;
@@ -15,6 +16,7 @@ import com.masai.Module.Task;
 import com.masai.Repository.AppUserRepository;
 import com.masai.Repository.TaskRepository;
 
+@Service
 public class TaskServiceImpl implements TaskService {
 
     @Autowired

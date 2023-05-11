@@ -1,9 +1,7 @@
-import { ReactNode } from "react";
 import {
   Box,
   Flex,
   Avatar,
-  Link,
   Button,
   Menu,
   MenuButton,
@@ -15,14 +13,14 @@ import {
   Stack,
   useColorMode,
   Center,
-  Heading,
+  Link as chakraLink,
 } from "@chakra-ui/react";
-import { MdNightlightRound } from "react-icons/md";
 
-import {BsFillSunFill} from "react-icons/bs";
- 
+import { Link } from "react-router-dom";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+
 const NavLink = ({ children }) => (
-  <Link
+  <chakraLink
     px={2}
     py={1}
     rounded={"md"}
@@ -33,7 +31,7 @@ const NavLink = ({ children }) => (
     href={"#"}
   >
     {children}
-  </Link>
+  </chakraLink>
 );
 
 export default function Nav() {
@@ -43,18 +41,12 @@ export default function Nav() {
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box>
-            <Heading>Task Planner</Heading>
-          </Box>
+          <Box fontSize={"2xl"}>Link</Box>
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <Button onClick={toggleColorMode}>
-                {colorMode === "light" ? (
-                  <MdNightlightRound />
-                ) : (
-                  <BsFillSunFill />
-                )}
+                {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
 
               <Menu>
@@ -64,8 +56,20 @@ export default function Nav() {
                   variant={"link"}
                   cursor={"pointer"}
                   minW={0}
-                ></MenuButton>
+                >
+                  <Avatar
+                    size={"sm"}
+                    src={"https://avatars.dicebear.com/api/male/username.svg"}
+                  />
+                </MenuButton>
                 <MenuList alignItems={"center"}>
+                  <br />
+                  <Center>
+                    <Avatar
+                      size={"2xl"}
+                      src={"https://avatars.dicebear.com/api/male/username.svg"}
+                    />
+                  </Center>
                   <br />
                   <Center>
                     <p>Username</p>

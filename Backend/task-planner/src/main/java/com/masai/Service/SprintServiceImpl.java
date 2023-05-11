@@ -3,12 +3,14 @@ package com.masai.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.masai.Exception.SprintException;
 import com.masai.Module.Sprint;
 import com.masai.Module.Task;
 import com.masai.Repository.SprintRepository;
 
+@Service
 public class SprintServiceImpl implements SprintService {
 
     @Autowired
